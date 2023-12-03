@@ -22,7 +22,7 @@ router.get('/availabeRemedy/', async (req, res) => {
 
     res.json(availabeRemedy);
   } catch (error) {
-    res.status(500).json({ error: 'Erro ao buscar os medicamentos' });
+    res.status(500).json({ error: error });
   }
 });
 
@@ -50,7 +50,7 @@ router.put('/:id', async (req, res) => {
     });
     res.json(updatedRemedy);
   } catch (error) {
-    res.status(500).json({ error: 'Erro ao atualizar o medicamento' });
+    res.status(500).json({ error: error });
   }
 });
 
