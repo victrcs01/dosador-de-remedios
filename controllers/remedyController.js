@@ -40,7 +40,7 @@ router.post('/', async (req, res) => {
         doses_frequency,
         amount_per_dose, 
         remedy_notes, 
-        tube_identifier: tube_identifier.toString(),
+        tube_identifier: Number(tube_identifier),
         last_dose,
         remaining_doses
       },
