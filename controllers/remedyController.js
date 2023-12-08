@@ -55,7 +55,7 @@ router.post('/', async (req, res) => {
 // Atualizar um Remedy por ID
 router.put('/:id', async (req, res) => {
   const { id } = req.params;
-  const { name, frequency, amount_per_dose, notes, tube_identifier } = req.body;
+  const { name, frequency, amount_per_dose, notes, tube_identifier, last_dose, remaining_doses } = req.body;
   try {
     const updatedRemedy = await prisma.remedy.update({
       where: { id: parseInt(id) },
