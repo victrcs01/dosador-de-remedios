@@ -8,12 +8,12 @@ datasource db {
 }
 
 model Remedy {
-  remedy_id       Int      @id @default(autoincrement())
+  id       Int      @id @default(autoincrement())
   name            String   @db.VarChar(255)
-  doses_frequency Int
+  frequency Int
   amount_per_dose Int
   last_dose       DateTime @db.DateTime(0)
   remaining_doses Int
-  remedy_notes    String?  @db.Text
+  notes    String?  @db.Text
   tube_identifier Int?  
 }
