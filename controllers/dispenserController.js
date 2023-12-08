@@ -12,9 +12,9 @@ router.get('/availabeRemedy/', async (req, res) => {
 
     for (let remedy of remedies) {
       const now = new Date();
-      const { last_dose, doses_frequency} = remedy;
+      const { last_dose, frequency} = remedy;
       const minutesDifference = Math.floor(Math.abs(now.getTime() - last_dose.getTime())/ (1000 * 60));
-      if (minutesDifference > doses_frequency) {
+      if ((minutesDifference + 5) > frequency) {
         availabeRemedy = remedy;
         break;
       }
@@ -31,13 +31,13 @@ router.put('/:id', async (req, res) => {
   const { id } = req.params;
   try {
     const remedy = await prisma.remedy.findUnique({
-      where: { remedy_id: parseInt(id) },
+      where: { id: parseInt(id) },
     });
 
-    const {name, doses_frequency, amount_per_dose, remedy_notes, tube_identifier, last_dose, remaining_doses} = remedy;
+    const {name, frequency, amount_per_dose, notes, tube_identifier, last_dose, remaining_doses} = remedy;
 
     const updatedRemedy = await prisma.remedy.update({
-      where: { remedy_id: parseInt(id) },
+      where: { id: parseInt(id) },
       data: {
         name,
         doses_frequency,
