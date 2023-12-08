@@ -40,9 +40,9 @@ router.put('/:id', async (req, res) => {
       where: { id: parseInt(id) },
       data: {
         name,
-        doses_frequency,
+        frequency,
         amount_per_dose, 
-        remedy_notes, 
+        notes, 
         tube_identifier,
         last_dose: new Date(),
         remaining_doses: remaining_doses - amount_per_dose
