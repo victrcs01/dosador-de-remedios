@@ -14,7 +14,7 @@ router.get('/availabeRemedy/', async (req, res) => {
       const now = new Date();
       const { last_dose, frequency} = remedy;
       const minutesDifference = Math.floor(Math.abs(now.getTime() - last_dose.getTime())/ (1000 * 60));
-      if ((minutesDifference + 5) > frequency) {
+      if ((minutesDifference) > frequency) {
         availabeRemedy = remedy;
         break;
       }
